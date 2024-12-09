@@ -4,27 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Calculator</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <h1>Loan Calculator</h1>
-        <label for="loanType">Select Loan Type:</label>
-        <select id="loanType">
-            <option value="First">First Loan (15%)</option>
-            <option value="Second">Second Loan (10%)</option>
-            <option value="Third">Subsequent Loan (7%)</option>
-        </select>
-        
-        <label for="amount">Enter Loan Amount (€):</label>
-        <input type="number" id="amount" placeholder="Amount in Euros" />
-        
-        <button onclick="calculateLoan()">Calculate</button>
-        
-        <p id="result"></p>
-    </div>
+    <h1>Loan Calculator</h1>
+    <label for="loanAmount">Enter Loan Amount:</label>
+    <input type="number" id="loanAmount" placeholder="Loan Amount" required>
+    <br><br>
     
-    <script src="script.js"></script>
+    <label for="loanType">Select Loan Type:</label>
+    <select id="loanType">
+        <option value="first">First Loan (15% interest)</option>
+        <option value="second">Second Loan (10% interest)</option>
+        <option value="third">Third Loan (7% interest)</option>
+    </select>
+    <br><br>
+    
+    <button onclick="calculateLoan()">Calculate</button>
+    <br><br>
+    
+    <p id="result"></p>
+
+    <script>
+        function calculateLoan() {
+            // Get loan amount from the input field
+            let loanAmount = parseFloat(document.getElementById("loanAmount").value);
+            let loanType = document.getElementById("loanType").value;
+            let interestRate;
+
+            // Set interest rates based on loan type
+            if (loanType === "first") {
+                interestRate = 0.15; // 15% for the first loan
+            } else if (loanType === "second") {
+                interestRate = 0.10; // 10% for the second loan
+            } else if (loanType === "third") {
+                interestRate = 0.07; // 7% for the third loan
+            }
+
+            // Check if loanAmount is valid
+            if (isNaN(loanAmount) || loanAmount <= 0) {
+                document.getElementById("result").innerHTML = "Please enter a valid loan amount.";
+                return;
+            }
+
+            // Calculate the total amount with interest
+            let totalAmount = loanAmount * (1 + interestRate);
+
+            // Format the result with a dollar sign
+            let formattedAmount = '$' + totalAmount.toFixed(2);
+
+            // Display the result
+            document.getElementById("result").innerHTML = "Your total loan amount with interest: " + formattedAmount;
+        }
+    </script>
 </body>
 </html>
 
