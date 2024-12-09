@@ -4,25 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Loan Calculator</h1>
-    <label for="loanAmount">Enter Loan Amount:</label>
-    <input type="number" id="loanAmount" placeholder="Loan Amount" required>
-    <br><br>
-    
-    <label for="loanType">Select Loan Type:</label>
-    <select id="loanType">
-        <option value="first">First Loan (15% interest)</option>
-        <option value="second">Second Loan (10% interest)</option>
-        <option value="third">Third Loan (7% interest)</option>
-    </select>
-    <br><br>
-    
-    <button onclick="calculateLoan()">Calculate</button>
-    <br><br>
-    
-    <p id="result"></p>
+
+    <div class="calculator-container">
+        <h1>Loan Calculator</h1>
+        
+        <label for="loanAmount">Enter Loan Amount:</label>
+        <input type="number" id="loanAmount" placeholder="Loan Amount" required>
+        
+        <label for="loanType">Select Loan Type:</label>
+        <select id="loanType">
+            <option value="first">First Loan (15% interest)</option>
+            <option value="second">Second Loan (10% interest)</option>
+            <option value="third">Third Loan (7% interest)</option>
+        </select>
+        
+        <button onclick="calculateLoan()">Calculate</button>
+        
+        <p id="result"></p>
+    </div>
 
     <script>
         function calculateLoan() {
@@ -56,6 +112,7 @@
             document.getElementById("result").innerHTML = "Your total loan amount with interest: " + formattedAmount;
         }
     </script>
+
 </body>
 </html>
 
